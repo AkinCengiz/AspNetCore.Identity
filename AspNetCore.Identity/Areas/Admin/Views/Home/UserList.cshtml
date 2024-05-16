@@ -1,0 +1,32 @@
+﻿@model List<UserViewModel>
+@{
+    ViewData["Title"] = "UserList";
+}
+
+<h1>Üye Listesi</h1>
+<hr/>
+<table class="table table-responsive table-bordered table-success">
+    	<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Actions</th>
+			</tr>
+	</thead>
+	<tbody>
+		@foreach (var user in Model)
+		{
+			<tr>
+				<td>@user.Id</td>
+				<td>@user.Name</td>
+				<td>@user.Email</td>
+				<td>
+					<a class="btn btn-warning" asp-controller="Home" asp-action="UserEdit" asp-route-id="@user.Id">Edit</a> |
+					<a class="btn btn-danger" asp-controller="Home" asp-action="UserDelete" asp-route-id="@user.Id">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
